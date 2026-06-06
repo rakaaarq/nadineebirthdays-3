@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday My Princess</title>
+  <meta name="description" content="A magical birthday surprise made only for Nadine Aminara Haries." />
+
+  <!-- Font tema princess / royal / romantic. Bisa diganti di style.css bagian :root. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Audio utama. File lagu ada di assets/music/lagu.mp3 -->
+  <audio id="birthdayAudio" preload="metadata" src="assets/music/lagu.mp3"></audio>
+
+  <!-- Layer dekorasi background: titik kecil, sparkle, glow, dan parallax ringan dibuat oleh CSS/JS. -->
+  <div class="ambient" aria-hidden="true">
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <div class="aurora aurora-three"></div>
+    <div id="starField" class="star-field"></div>
+    <img class="floating-deco deco-sun" src="assets/animations/sun.png" alt="" />
+    <img class="floating-deco deco-flower deco-flower-one" src="assets/animations/flower.png" alt="" />
+    <img class="floating-deco deco-flower deco-flower-two" src="assets/animations/flower.png" alt="" />
+  </div>
+
+  <!-- OPENING SCENE: halaman pembuka sebelum musik dimainkan. -->
+  <section id="openingScene" class="opening-scene">
+    <div class="opening-card reveal-on-load">
+      <div class="opening-crown" aria-hidden="true">♕</div>
+      <p class="eyebrow">A Magical Birthday Night For</p>
+      <h1 class="opening-name">
+        <span>Nadine Aminara</span>
+        <span>Haries</span>
+      </h1>
+      <p class="opening-date">June 20, 2026</p>
+      <p class="opening-quote">“Every lantern tells a story, and tonight the brightest one is yours.”</p>
+      <button id="openSurpriseBtn" class="btn primary-btn" type="button">Open Your Birthday Surprise ✦</button>
+      <p class="opening-note">Click this button to start the music and open the surprise.</p>
+    </div>
+  </section>
+
+  <main id="mainContent" class="main-content" aria-live="polite">
+    <!-- MUSIC PLAYER -->
+    <section id="musicDock" class="music-dock" aria-label="Music player">
+      <button id="musicToggleBtn" class="music-toggle" type="button" aria-expanded="false" aria-label="Open music controls">
+        <img src="assets/animations/sun.png" alt="" />
+      </button>
+      <div class="music-panel glass-panel" aria-label="Music controls">
+        <button id="playPauseBtn" class="music-btn" type="button">Pause</button>
+        <button id="muteBtn" class="music-btn" type="button">Mute</button>
+        <div class="progress-wrap" aria-label="Music progress">
+          <span id="currentTime">0:00</span>
+          <input id="progressBar" type="range" min="0" max="100" value="0" step="0.1" aria-label="Music progress" />
+          <span id="durationTime">0:00</span>
+        </div>
+        <label class="volume-wrap" aria-label="Volume">
+          <span>Vol</span>
+          <input id="volumeControl" type="range" min="0" max="1" value="0.72" step="0.01" />
+        </label>
+      </div>
+    </section>
+
+    <!-- HERO SECTION -->
+    <section class="section hero-section reveal-section" id="hero">
+      <div class="hero-card glass-panel parallax-card">
+        <p class="eyebrow">A Little World Made Only For You</p>
+        <h2 class="hero-title">
+          <span>Happy Birthday</span>
+          <span>My Princess</span>
+        </h2>
+        <p class="hero-subtitle">May your life shine brighter than a thousand lanterns.</p>
+        <div class="name-pill">Nadine Aminara Haries <span>♡</span> A</div>
+      </div>
+    </section>
+
+    <!-- FLOATING LANTERN WISHES -->
+    <section class="section lantern-section reveal-section" id="wishes">
+      <div class="section-heading">
+        <p class="eyebrow">Make A Wish</p>
+        <h2>Floating Lantern Wishes</h2>
+        <p>Tap or click on a glowing lantern to reveal a sweet little message.</p>
+      </div>
+      <div class="lantern-stage glass-panel" id="lanternStage" aria-label="Interactive floating lantern wishes"></div>
+    </section>
+
+    <!-- OUR MAGICAL MEMORIES: galeri tanpa label foto1/foto2. -->
+    <section class="section memories-section reveal-section" id="memories">
+      <div class="section-heading">
+        <p class="eyebrow">Every Picture Holds A Little Piece Of My Heart</p>
+        <h2>Our Magical Memories</h2>
+        <p>A showcase of moments that feel too precious to forget.</p>
+      </div>
+
+      <div class="gallery-shell glass-panel">
+        <button class="gallery-arrow arrow-left" id="prevPhoto" type="button" aria-label="Previous photo">‹</button>
+        <div class="gallery-main" id="galleryMain" role="button" tabindex="0" aria-label="Open current photo">
+          <div class="gallery-blur" id="galleryBlur"></div>
+          <img id="mainGalleryImage" src="" alt="Nadine memory" />
+        </div>
+        <button class="gallery-arrow arrow-right" id="nextPhoto" type="button" aria-label="Next photo">›</button>
+        <p id="galleryCaption" class="gallery-caption"></p>
+        <div id="galleryThumbs" class="gallery-thumbs" aria-label="Gallery thumbnails"></div>
+        <div id="galleryDots" class="gallery-dots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- A LETTER FROM MY HEART -->
+    <section class="section letter-section reveal-section" id="letter">
+      <div class="section-heading">
+        <p class="eyebrow">A Royal Letter</p>
+        <h2>A Letter From My Heart</h2>
+        <p>Open this little letter from my heart.</p>
+      </div>
+
+      <div class="letter-stage">
+        <div id="royalEnvelope" class="royal-envelope" aria-label="Royal envelope">
+          <div class="letter-paper" id="letterPaper">
+            <div id="letterText" class="letter-text"></div>
+          </div>
+          <div class="envelope-back"></div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-left"></div>
+          <div class="envelope-right"></div>
+          <div class="envelope-bottom"></div>
+          <button id="openLetterBtn" class="wax-seal" type="button" aria-label="Open letter">♡</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NADINE'S FAVORITE THINGS -->
+    <section class="section favorites-section reveal-section" id="favorites">
+      <div class="section-heading">
+        <p class="eyebrow">Little Things She Loves</p>
+        <h2>Nadine’s Favorite Things</h2>
+        <p>A tiny collection of sweetness that makes her smile.</p>
+      </div>
+      <div id="favoritesTimeline" class="favorites-timeline glass-panel"></div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="section closing-section reveal-section" id="closing">
+      <div class="closing-card glass-panel parallax-card">
+        <p class="eyebrow">A Final Wish</p>
+        <h2>May Your Story Always Glow Beautifully.</h2>
+        <p>Happy birthday, Nadine Aminara Haries. Tonight is yours, and every lantern in the sky is cheering for you.</p>
+        <button id="sendMagicBtn" class="btn primary-btn" type="button">Send More Magic ✨</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX GALERI -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="closeLightbox" class="lightbox-close" type="button" aria-label="Close image">×</button>
+    <img id="lightboxImage" src="" alt="Selected memory" />
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <div id="toast" class="magic-toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
