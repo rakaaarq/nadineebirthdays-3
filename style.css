@@ -17,10 +17,12 @@
   --pink: #ffb4dc;
   --plum: #91146e;
 
-  --font-princess: "Great Vibes", cursive;
-  --font-royal: "Cinzel Decorative", Georgia, serif;
-  --font-romantic: "Cormorant Garamond", Georgia, serif;
+:root {
+  --font-princess: "Parisienne", cursive;
+  --font-royal: "Playfair Display", Georgia, serif;
+  --font-romantic: "Playfair Display", Georgia, serif;
   --font-body: "Poppins", Arial, sans-serif;
+}
 
   --shadow-gold: 0 0 24px rgba(255, 214, 111, .28), 0 0 70px rgba(255, 190, 69, .12);
   --glass: rgba(100, 45, 145, .30);
